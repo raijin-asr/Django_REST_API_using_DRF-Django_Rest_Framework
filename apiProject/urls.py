@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import home_page,home_page_JSON
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', home_page),
+    path('home/JSON/', home_page_JSON),
     path('api/', include('apiApp.urls')) #include the urls of the apiApp app
 ]
