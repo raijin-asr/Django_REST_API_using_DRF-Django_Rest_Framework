@@ -14,7 +14,7 @@
     7. django-admin startproject apiProject
     8. django-admin startapp apiApp 
     9. ls (see if there is manage.py in the list)
-    10. python manage.py createsuperuser(for admin panel)
+    10. python manage.py createsuperuser(for admin panel:raijinapi:raijin1234)
     11. python manage.py makemigrations(after model is created for database)
     12. python manage.py migrate(optional)
 

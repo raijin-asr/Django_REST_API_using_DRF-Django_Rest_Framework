@@ -123,3 +123,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#REST FRAMEWORK SETTINGS
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', #only authenticated users can perform CRUD operations
+    ],
+    'DEFAULT_RENDERER_CLASSES': [   #default renderer classes, cant use api tst in browser
+        'rest_framework.renderers.JSONRenderer', #JSON renderer
+    ],
+}

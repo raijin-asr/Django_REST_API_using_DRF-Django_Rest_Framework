@@ -15,6 +15,9 @@ class Company(models.Model):
     added_date= models.DateTimeField(auto_now=True)
     active= models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name + '(' + self.location +')' #return the name,location of the company
+    
 #Employee model
 class Employee(models.Model):
     name= models.CharField(max_length=100)
