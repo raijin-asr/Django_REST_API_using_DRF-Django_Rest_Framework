@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home_page),
     path('home/JSON/', home_page_JSON),
-    path('api/', include('apiApp.urls')) #include the urls of the apiApp app
+    path('api/', include('apiApp.urls')), #include the urls of the apiApp app
+    path('accounts/', include('accounts.urls')), #include the urls of the accounts app  
 ]

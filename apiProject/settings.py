@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apiApp', #add the app name here
+    'rest_framework.authtoken', #add the rest_framework authtoken app
+    'accounts', #add the accounts app
 ]
 
 MIDDLEWARE = [
@@ -126,10 +128,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #REST FRAMEWORK SETTINGS
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', #only authenticated users can perform CRUD operations
-    ],
-    'DEFAULT_RENDERER_CLASSES': [   #default renderer classes, cant use api tst in browser
-        'rest_framework.renderers.JSONRenderer', #JSON renderer
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', #only authenticated users can perform CRUD operations
+    # ],
+    # 'DEFAULT_RENDERER_CLASSES': [   #default renderer classes, cant use api tst in browser
+    #     'rest_framework.renderers.JSONRenderer', #JSON renderer
+    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [ #default authentication classes
+        'rest_framework.authentication.TokenAuthentication', #token based authentication
     ],
 }
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
