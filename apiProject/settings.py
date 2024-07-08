@@ -131,10 +131,13 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', #only authenticated users can perform CRUD operations
     # ],
-    # 'DEFAULT_RENDERER_CLASSES': [   #default renderer classes, cant use api tst in browser
-    #     'rest_framework.renderers.JSONRenderer', #JSON renderer
-    # ],
+    'DEFAULT_RENDERER_CLASSES': [   #default renderer classes, cant use api tst in browser
+        'rest_framework.renderers.JSONRenderer', #JSON renderer
+        'rest_framework.renderers.BrowsableAPIRenderer', #Browsable API renderer
+
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [ #default authentication classes
+        # 'rest_framework.authentication.SessionAuthentication',  # Use session authentication for forms
         'rest_framework.authentication.TokenAuthentication', #token based authentication
     ],
 }

@@ -21,3 +21,13 @@
 # Running Application
     13. python manage.py runserver
 
+
+# What i've learned and implemented(day wise)
+    Day 1: Setup and Installation of Django, Django Rest Framework(DRF), Virtual Environment Creation
+    Day 2: Create apiApp, setup company model
+    Day 3: Create company serializer, setup url and views
+    Day 4: Added Employee model, api routing and test on postman
+    Day 5: Created Employee serializer, viewsets, rest framework default permission and renderer classes, setup some admin site register
+    Day 6: Rest Framework Api Auth in Login, Register and Logout
+    Day 7: Change Password, get all users, api test in postman
+    Day 8: 

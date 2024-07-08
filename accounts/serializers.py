@@ -15,3 +15,17 @@ class UserSerializer(serializers.ModelSerializer): #create a user serializer
         user.set_password(validated_data['password'])
         user.save()
         return user
+    
+  
+#change password serializer
+class ChangePasswordSerializer(serializers.Serializer):
+    model = CustomUser
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+# reset password serializer
+class ResetPasswordEmailRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField(min_length=2)
+
+    class Meta: #meta class to specify the fields
+        fields = ['email']

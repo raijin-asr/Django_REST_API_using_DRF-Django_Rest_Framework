@@ -28,6 +28,6 @@ class CompanyViewSet(viewsets.ModelViewSet): # ModelViewSet is a class that prov
             return Response({'error':'Company not found'}, status=404)
         
 #Employee Views
-class EmployeeViewSet(viewsets.ModelViewSet):
-    queryset= Employee.objects.all()
+class EmployeeViewSet(viewsets.ModelViewSet): 
+    queryset= Employee.objects.all() 
     serializer_class= EmployeeSerializer
