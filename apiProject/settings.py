@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apiApp', #add the app name here
     'rest_framework.authtoken', #add the rest_framework authtoken app
     'accounts', #add the accounts app
+    'django_rest_passwordreset', #add the password reset app
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ ROOT_URLCONF = 'apiProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -143,3 +144,11 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+#EMAIL SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #email backend for sending email
+EMAIL_HOST = 'smtp.gmail.com' #email host
+EMAIL_PORT = 587 #email port: gmail
+EMAIL_USE_TLS = True #use tls
+EMAIL_HOST_USER = 'raijin'  #email username
+EMAIL_HOST_PASSWORD = 'password' #email password

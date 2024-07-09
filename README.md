@@ -30,4 +30,4 @@
     Day 5: Created Employee serializer, viewsets, rest framework default permission and renderer classes, setup some admin site register
     Day 6: Rest Framework Api Auth in Login, Register and Logout
     Day 7: Change Password, get all users, api test in postman
-    Day 8: 
+    Day 8: Reset Password using django_rest_passwordreset, email_backend, signals.py token based reset
