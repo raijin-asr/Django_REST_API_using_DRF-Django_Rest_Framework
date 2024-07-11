@@ -31,4 +31,6 @@
     Day 6: Rest Framework Api Auth in Login, Register and Logout
     Day 7: Change Password, get all users, api test in postman
     Day 8: Reset Password using django_rest_passwordreset, email_backend, signals.py token based reset
-    Day9: Create new Company and Employee using deserialization
+    Day 9: Create new Company and Employee using deserialization(POST)
+    Day10:  Update and Delete Company and Employee
+    Day11: 

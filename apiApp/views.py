@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 from apiApp.models import Company, Employee
 from apiApp.serializers import CompanySerializer, EmployeeSerializer
@@ -44,24 +44,39 @@ class CompanyViewSet(viewsets.ModelViewSet): # ModelViewSet is a class that prov
             return JsonResponse(response_data)
         return JsonResponse(serializer.errors, status=400)
     
-    # LONG PROCESS
-    # def createCompany(self,request):
-    #     if request.method == 'POST':
+    #companies/updateCompany: deserialize the data and update the company
+    @action(detail=False, methods=['put'])
+    def updateCompany(self, request):
+        company_id = request.data.get('company_id')
+        company = get_object_or_404(Company, pk=company_id)
+        serializer = CompanySerializer(company, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            response_data = {
+                'status': 'success',
+                'message': 'Company updated successfully'
+            }
+            return JsonResponse(response_data)
+        return JsonResponse(serializer.errors, status=400)
 
-    #         #NO need of this below 3 lines as equest.data in Django Rest Framework (DRF) already provides you with the parsed data from the request body
-    #         # data = request.data
-    #         # stream = io.BytesIO(data) #convert the data to bytes
-    #         # python_data=JSONParser().parse(stream) #parse the data to python data
-            
-    #         serializer = CompanySerializer(data=request.data)
-    #         if serializer.is_valid():
-    #             serializer.save()
-    #             response_data = {
-    #                 'status': 'success', 
-    #                 'message': 'Company created successfully'}
-    #             return HttpResponse(JSONRenderer().render(response_data), content_type='application/json')
-    #         return HttpResponse(JSONRenderer().render(serializer.errors), content_type='application/json', status=400)
-    #     return HttpResponse(JSONRenderer().render({'error': 'Invalid request'}), content_type='application/json', status=400)
+    #companies/deleteCompany: delete the company
+    @action(detail=False, methods=['delete'])
+    def deleteCompany(self, request):
+        company_id = request.data.get('company_id')
+        if company_id is None:
+            response_data = {
+                'status': 'error',
+                'message': 'Company ID is required'
+            }
+            return JsonResponse(response_data, status=400)
+        company = get_object_or_404(Company, pk=company_id)
+        company.delete()
+        response_data = {
+            'status': 'success',
+            'message': 'Company deleted successfully'
+        }
+        return JsonResponse(response_data)
+
 
 #Employee Views
 class EmployeeViewSet(viewsets.ModelViewSet): 
@@ -80,4 +95,37 @@ class EmployeeViewSet(viewsets.ModelViewSet):
             }
             return JsonResponse(response_data)
         return JsonResponse(serializer.errors, status=400)
+    
+    #employees/updateEmployee: deserialize the data and update the company
+    @action(detail=False, methods=['put'])
+    def updateEmployee(self, request):
+        employee_id = request.data.get('employee_id')
+        employee = get_object_or_404(Employee, pk=employee_id)
+        serializer = EmployeeSerializer(employee, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            response_data = {
+                'status': 'success',
+                'message': 'Employee updated successfully'
+            }
+            return JsonResponse(response_data)
+        return JsonResponse(serializer.errors, status=400)
+    
+    #employees/deleteEmployee: delete the company
+    @action(detail=False, methods=['delete'])
+    def deleteEmployee(self, request):
+        employee_id = request.data.get('employee_id')
+        if employee_id is None:
+            response_data = {
+                'status': 'error',
+                'message': 'Employee ID is required'
+            }
+            return JsonResponse(response_data, status=400)
+        employee = get_object_or_404(Employee, pk=employee_id)
+        employee.delete()
+        response_data = {
+            'status': 'success',
+            'message': 'Employee deleted successfully'
+        }
+        return JsonResponse(response_data)
 
